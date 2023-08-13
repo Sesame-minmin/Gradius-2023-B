@@ -1,6 +1,7 @@
 import { gamesRepository } from '$/repository/gamesRepository';
 import { gameIdParser } from '$/service/idParsers';
 import { randomUUID } from 'crypto';
+import { enemyUseCase } from './enemyUseCase';
 
 export const gameUseCase = {
   get: async () => {
@@ -23,5 +24,6 @@ export const gameUseCase = {
       ...game,
       displayNumber,
     });
+    await enemyUseCase.createAll();
   },
 };
